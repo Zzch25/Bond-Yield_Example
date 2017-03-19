@@ -1,0 +1,85 @@
+Zachary Job
+Bond Yield Calculator Staging
+
+Information
+-fixed income securities EG bonds are valued according to the price value the user will receive
+-cash receieved sooner is more valuble as it can be immediately reinvested
+	-This realizable gain is based on the current interest rate
+	-If CF is reinvested at rate r
+		- CF(1) = CF(0) * (1 * r)^N_Years
+		- vise versa for CF(0)
+
+	
+		EX>>
+
+			For a 1000$ bond with 10% coupon over 5 years
+			company pays 100 each year
+			at the end of the 5th, 1000 is payed
+			in total 1500
+
+			user payed
+			100 / (1.15^1) + ... + 100 / (1.15^5) + 1000 / (1.15^5) = <*<*< 832.4 >*>*>
+			This is Yield To Maturity (YTM), executed to entice				
+			The following are virtually interchangeable Yield, YTM, discount rate, discount rate, interest rate -> r	
+
+
+Mission (!impossible - "your assignment, if you choose to take it")
+			-Interface
+				-GUI -> CLI -gui shortcut
+					-Simple updateable
+				-CLI
+					-KEEP scriptable, do not have walk through prompt
+			-Portable throughout NET, including Mono on linux	
+				-Mono
+					-Preproc? Or is the CIL compilation full featured?
+					-GUI?
+						-X11 native?
+							-Ease of shortcut launching, and X11 is prolific
+			-Inputs
+				-Coupon
+				-Time
+				-Face value
+				-Price
+				-Yield AKA r
+			-Accuracy
+				-10^-7
+			-Signatures
+				-double CalcPrice(double coupon, int years, double face, double rate); 
+				-double CalcYield(double coupon, int years, double face, double price);
+			-Additional
+				- R E V E R S E   Q U E R Y
+					-Inform reverse query actioned
+				-help prompts
+					- --help
+					- bad command --> See for commands "..."
+				
+Design
+	-Interface
+		-GUI
+			-Check toggle for price VS yield option
+				-grey unused but do not delete (or block input?)
+			-calculate if...
+				-values filtered (filter at input)
+				-valid values entered
+				-division not nullified by zero
+			-output
+				-general window
+				-log current log window
+				-disable logging
+				-load history
+				-History only
+				-Clear history Window
+				-clear log
+		-CLI
+			-Check inputs
+				-print out all issues
+				-cite help commands
+			-Output
+				-Simple print
+				-clear history
+				-print history
+		-Shared
+			-Output commands and results to log
+			-print history
+			
+			

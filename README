@@ -1,0 +1,174 @@
+Zachary Job
+2/1/17
+Bond yield calculator
+
+
+Sorry for the mess, this is my first C# application
+outside a simple GUI which I made years ago
+
+On why I didn't time...
+
+I used an O(1) and O(log(n)-> 2n) solution relying on a
+constant function and geometric series. Although the geometric
+series guessing algorithm needs work (my numerical methods notes are
+burried in my closet!), it is essentially close to perfection minus
+the averaging tool I used pre finding the yield.
+
+Also STAGING contains my planning notes
+
+===================================================
+1) Building  =====================================
+2) Use       =====================================
+3) Logs      =====================================
+===================================================
+
+1) Building
+
+	Currently this can only be built in Visual Studio
+	Tested in VSC 2015
+
+	Build:
+		
+		Untested on linux, mono, as of gui
+		Open the Bonds_Calculator project in VS
+		Select build mode
+		
+		DEPRECATED::
+	
+		Attempt Automatic:
+			make
+		Windows:
+			if make is installed
+				if mono
+					make use_mono
+				else
+					make use_csc
+			else
+				make.bat
+		Linux:
+			make use_mono
+
+	Clean:
+	
+		Untested on linux, mono, as of gui
+		Open the Bonds_Calculator project in VS
+		Select build clean mode
+	
+		DEPRECATED::
+	
+		Attempt Automatic:
+			make
+		Windows:
+			make clean
+		Linux:
+			make clean
+
+	Run:
+	
+		Untested on linux,
+		Open the Bonds_Calculator project in VS
+		Run in debug
+		
+		OR
+		
+		If built open the GUI from command line with the --gui
+		switch or by typing the executable name only
+		
+		OR
+		
+		Open your command line to the executable location
+		type its name and relevant switches, see --help for
+		options
+	
+		DEPRECATED::
+	
+		Windows:
+			if mono
+				mono fiyield <parameters>
+			else
+				fiyield <parameters>
+		Linux:
+			mono fiyield <parameters>
+
+2) Use
+
+	NOTE
+		If the program cannot access a log file, it will
+		simply ignore the option and continue
+
+	Precision
+		10e-7
+
+	Algorithm Notes
+		Both expect positive numbers!
+
+	Type info
+		Double
+			A value capable of decimal point precision
+				Example: 100.01
+		Integer
+			A value without decimal point precision
+				Example: 100
+
+	CLI
+		To run...
+
+			For price queries using coupon percentage, years intended, the face value, and the rate or yield. The query and result can be logged with the
+optional switch
+
+			<name.exe> --price
+				Required additional fields
+					-coupon=<Value, Double type>
+					-years=<Value, Int type>
+					-face=<Value, Double type>
+					-rate=<Value, Double type>
+				Optional
+					-log-query
+			
+			For yield queries using coupon percentage, years intended, the face value, and the price. The query and result can be logged with the
+optional switch
+
+			<name.exe> --yield
+				Required additional fields
+					-coupon=<Value, Double type>
+					-years=<Value, Int type>
+					-face=<Value, Double type>
+					-price=<Value, Double type>
+				Optional
+					-log-query
+
+		Additional log information...
+			fiyield
+				--log-wipe
+				--log-print
+		
+		Access a help menu
+			fiyield
+				--help
+
+	GUI
+		To run...
+
+			Start from CLI
+				<name.exe> --gui
+				<name.exe>
+			Else
+				Use the provided executable
+
+			1) Select the toggleable regarding if you'd prefer price or yeild
+			2) Enter into the ungrayed regions the information
+			3) Hit calculate
+			4) View the result window
+
+			Note: The result window will display input errors as well as the
+logging window when it is enabled.
+
+		To manage logging...
+
+			1) Load Log: Append logged history to the log window
+			2) Toggle Log: Enable or disable log
+			3) Toggle History Only: Use the log window without logging
+				This will gray when logging is enabled
+			4) Clear History: Wipe the window view while maintaing the log
+			5) Clear Log: Wipe the log file clean without wiping the window
+

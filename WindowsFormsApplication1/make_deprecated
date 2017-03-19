@@ -1,0 +1,51 @@
+#Zachary Job
+#2/1/2017
+
+NAME = fiyield
+SRC = \
+		shared.cs main.cs cli.cs Form1.cs Form1.Designer.cs calculator.cs file.cs
+
+RM = rm -rf
+
+OS:=$(shell uname)
+LIBRARIES:=NONE
+
+#############################
+all:
+#############################
+ifeq ($(OS), Windows_NT)
+	make use_csc
+else
+	make use_mono
+endif
+#############################
+
+#Build for mono
+use_mono:
+	#Building for mono runtime enviornment...
+	mcs -pkg:dotnet -out:$(NAME) $(SRC) 
+
+#build debug mono
+use_mono_debug:
+	#Building for mono runtime enviornment...
+	mcs -pkg:dotnet -debug -out:$(NAME) $(SRC) 
+
+#Build for native NET
+use_csc:
+	#Building for NET runtime enviornment...
+	csc /out:$(NAME).exe $(SRC)
+
+#Recursive
+clean:
+	-$(RM) $(NAME)*
+	-find ./ -type f \( 		-iname \*.h~ 		-o			\
+	  								-iname \*.o			-o		  	\
+	  								-iname \*.o~		-o		  	\
+	  								-iname \*.s			-o		  	\
+	  								-iname \*.s~		-o		  	\
+	  								-iname \*.cs~		-o		  	\
+	  								-iname \*~			-o		  	\
+	  								-iname \.*~			-o		  	\
+	  								-iname \.*.*.swp	-o		  	\
+	  								-iname \.*.*.un~			  	\
+	\) -delete
